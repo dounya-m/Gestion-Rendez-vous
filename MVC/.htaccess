@@ -1,0 +1,7 @@
+Options All -Indexes
+
+RewriteEngine On
+
+RewriteBase /GestionRendez-vous/MVC/
+
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
