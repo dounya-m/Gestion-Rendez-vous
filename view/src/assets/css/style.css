@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+#app {
+  text-align: center;
+  color: #2c3e50;
+}
+
+nav {
+  padding: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 3vw;
+  margin-right: 3vw;
+}
+
+nav img {
+  width: 5vw;
+}
+
+nav .nav_items a {
+  font-weight: bold;
+  color: #4f759b;
+  margin-right: 2vw;
+  text-decoration: none;
+}
+
+nav .nav_items a.router-link-exact-active {
+  color: #2639ED;
+}
+
+nav .btn {
+  background-color: #2639ED;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 0.5vw 1vw 0.5vw 1vw;
+  border: none;
+  border-radius: 10px;
+}
+
+nav .btn:hover {
+  background-color: #264f76;
+}
+
+.header {
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 13, 255, 0.287)), to(rgba(60, 103, 255, 0.382))), url("../images/header.webp");
+  background: linear-gradient(0deg, rgba(0, 13, 255, 0.287), rgba(60, 103, 255, 0.382)), url("../images/header.webp");
+  height: 90vh;
+  background-position: center;
+  background-size: cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 13vh;
+}
+
+.header h1 {
+  font-size: 62px;
+  font-weight: bold;
+  color: #ffffff;
+  width: 50%;
+  text-align: center;
+  margin-top: 3vw;
+}
+
+.header p {
+  text-align: center;
+  font-size: 24px;
+  color: #ffffff;
+  font-weight: 400;
+  width: 50vw;
+}
+
+.body {
+  width: 90%;
+  margin-top: 3vw;
+  margin-left: 7vw;
+  margin-right: 10vw;
+  padding-right: 6vw;
+}
+
+.body h2 {
+  text-align: left;
+  font-size: 32px;
+  color: #2639ED;
+  font-weight: 700;
+  width: 40%;
+}
+
+.body .body_items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.body .body_items p {
+  font-size: 18px;
+  color: #2c2c2c;
+  width: 40%;
+  text-align: left;
+}
+
+.body .body_items img {
+  width: 30vw;
+}
+
+.form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 5vw;
+}
+
+.form .form_title h2 {
+  text-align: center;
+  font-size: 32px;
+  color: #2639ED;
+  font-weight: 700;
+}
+
+.form .form {
+  width: 50%;
+  border: solid 1px #d8d9db;
+  border-radius: 50px;
+  padding: 2vw 0 1vw 0;
+}
+
+.form .form h3 {
+  text-align: center;
+  font-size: 30px;
+  color: #2639ED;
+  font-weight: 600;
+  margin-bottom: 5vw;
+  width: 100%;
+  height: 9vh;
+  border-bottom: #dce6f05e solid 2px;
+  -webkit-box-shadow: inset 0px -20px 20px 0px #ced9ff2b;
+          box-shadow: inset 0px -20px 20px 0px #ced9ff2b;
+}
+
+.form .form .form_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.form .form .form_info label {
+  font-size: 18px;
+  font-weight: 400;
+  color: #264f76;
+  display: block;
+  text-align: left;
+}
+
+.form .form .form_info input {
+  margin-top: 0.5vw;
+  margin-bottom: 2vw;
+  padding: 0.5vw;
+  width: 22vw;
+  height: 5vh;
+  border-radius: 10px;
+  border: solid 1px #969caa;
+}
+/*# sourceMappingURL=style.css.map */

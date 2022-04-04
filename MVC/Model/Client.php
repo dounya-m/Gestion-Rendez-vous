@@ -30,7 +30,7 @@ static public function add($nom,$prenom,$age,$date,$email,$phone){
         $stmt->bindParam(6, $email);
         $stmt->bindParam(7, $phone);
 
-        if( $stmt->execute() ){
+        if($stmt->execute()){
 
             uniqid($md_key, time() + (85400 * 30));
             
@@ -41,6 +41,21 @@ static public function add($nom,$prenom,$age,$date,$email,$phone){
             $stmt->close();
             $stmt = null;
 
+        }
+
+        static public function get($id){ 
+
+            try{
+                $query ='SELECT * FROM client WHERE id=:id ';
+                $stmt = Db::connect()->prepare($query);
+                $stmt->execute(array(":id" => $id));
+                $client = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $client;
+    
+            }catch(PDOException $ex){
+    
+                echo 'erreur' . $ex->$getMessage;
+            }
         }
         
     }    

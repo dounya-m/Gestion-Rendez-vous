@@ -1,13 +1,11 @@
 <?php
 header('Access-Control-Allow-Origin:*'); // * OR https://www.reddit.com/
+
+header('Content-Type: application/json ; charset=utf-8');
 //  header('Content-Type: multipart/form-data'); // ** FormData, for image uploading
 header("Access-Control-Allow-Methods: *"); // TODO: POST,GET,DELETE,PUT
+header("Access-Control-Max-Age: 600");
 header("Access-Control-Allow-Headers:*");
-
-
-// header('Access-Control-Allow-Origin: *');
-// header('Content-Type: appication/json');
-require_once './Model/Client.php';
 
 
 class clientController{
@@ -29,12 +27,21 @@ class clientController{
         $email = json_decode(file_get_contents("php://input"));
         $date = json_decode(file_get_contents("php://input"));
         $phone = json_decode(file_get_contents("php://input"));
+
         $json= json_encode($newClient->add($nom->nom,$prenom->prenom,$age->age,$date->date,$email->email,$phone->phone));
         echo $json;
 
 
     }
 
+    
+    public function getOneClient(){
+
+        $client = new Client();
+        $json= json_encode($client->get());
+        echo $json;
+
+    }
 }
 
 
