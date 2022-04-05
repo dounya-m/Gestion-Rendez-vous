@@ -160,5 +160,19 @@ $button-color: #0085FF;
             border: solid 1px rgb(150, 156, 170);
         }
         }
+        .btn{
+            background-color: #2639ED;
+            color: #ffffff;
+            font-size: 16px;
+            padding: 0.5vw 1vw 0.5vw 1vw;
+            border: none;
+            border-radius: 10px;
+            width: 8vw;
+            margin-right: 1vw;
+            margin-left: 1vw;
+        }
+        .btn:hover{
+            background-color: #264f76;
+        }
     }
     }

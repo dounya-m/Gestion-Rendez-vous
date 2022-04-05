@@ -14,16 +14,15 @@ require_once './Config/Database.php';
                 $stmt = null;
         
         }
-        static public function add($nom,$prenom,$age){
+        static public function add($star,$ending){
 
-            $new_key = uniqid();
-            $md_key = md5($new_key);
+            $today = DATE('now');
         
             $stmt = Db::connect()->prepare('INSERT INTO appointment 
             (date, star, ending)
             VALUES (?,?,?)');
             
-                $stmt->bindParam(1, $date);
+                $stmt->bindParam(1, $today);
                 $stmt->bindParam(2, $star);
                 $stmt->bindParam(3, $ending);
         

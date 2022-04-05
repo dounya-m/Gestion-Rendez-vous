@@ -24,11 +24,11 @@ class AppointmentController{
         
                 $newClient = new Appointment();
                 // $id=json_decode(file_get_contents("php://input")); 
-                $date = json_decode(file_get_contents("php://input"));  
+                // $date = json_decode(file_get_contents("php://input"));  
                 $star = json_decode(file_get_contents("php://input")); 
                 $ending = json_decode(file_get_contents("php://input")); 
         
-                $json= json_encode($newClient->add($date,$star,$ending));
+                $json= json_encode($newClient->add($star->star,$ending->ending));
                 echo $json;
         
         

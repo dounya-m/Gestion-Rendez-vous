@@ -18,33 +18,33 @@
         </div>
     </div>
 
-            <form class="form" action="">
+            <form class="form" v-on:submit.prevent="Add()">
             <div class="form_title">
               <h2 class="text-center ">Enter your information to make an appointment</h2>
             </div>
             <div class="form">
               <h3>who are you</h3>
                 <div class="form_info">
-              <label for="name">Your name</label>
-              <input type="text" placeholder="enter your name..">
+              <label for="name">Your last name</label>
+              <input type="text" placeholder="enter your name.." v-model="nom">
               <label for="name">Your first name</label>
-              <input type="text" placeholder="enter your firstname">
+              <input type="text" placeholder="enter your firstname" v-model="prenom">
 
 
               <label for="name">Age:</label>
-              <input type="number" placeholder="enter your age">
+              <input type="number" placeholder="enter your age" v-model="age">
 
               <label for="name">Date:</label>
-              <input type="date" placeholder="">
+              <input type="date" placeholder="" v-model="date">
 
               <label for="name">Email:</label>
-              <input type="email" placeholder="email..">
+              <input type="email" placeholder="email.." v-model="email">
 
               <label for="phone">Phone number:</label>
-              <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" placeholder="phone number">
+              <input type="tel" id="phone" name="phone" v-model="phone" placeholder="phone number">
               <div class="forme_button">
-                <button>Sign Up Now</button>
-                <button>Get Login</button>
+                <button button class="btn" type="submit">Sign Up Now</button>
+                <button button class="btn" type="submit">Get Login</button>
 
               </div>
                 </div>
@@ -60,12 +60,39 @@
 
 <script>
 // @ is an alias to /src
+
 import HelloWorld from '@/components/HelloWorld.vue'
+import axios from "axios";
 export default {
   name: 'HomeView',
+  data()
+  {
+    return{
+      nom : '',
+      prenom : '',
+      age : '',
+      date : '',
+      email : '',
+      phone : ''
+    }
+  },
   components: {
     HelloWorld
-  }
+  },
+      methods :{
+        Add(){
+        axios.post("http://localhost/GestionRendez-vous/MVC/clientController/addClient/",JSON.stringify({"nom": this.nom,
+    "prenom": this.prenom,
+    "age":this.age,
+    "email": this.email,
+    "date": this.date,
+    "phone": this.phone}))
+        .then(Response=>{
+            console.log(Response.status);
+            console.log(Response.data);
+        })
+        }
+    }
 }
 </script>
 

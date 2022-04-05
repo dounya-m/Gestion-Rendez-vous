@@ -7,6 +7,7 @@ header("Access-Control-Allow-Methods: *"); // TODO: POST,GET,DELETE,PUT
 header("Access-Control-Max-Age: 600");
 header("Access-Control-Allow-Headers:*");
 
+require_once "./Model/Client.php";
 
 class clientController{
 

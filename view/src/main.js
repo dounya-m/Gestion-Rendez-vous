@@ -11,4 +11,8 @@ import router from './router'
 // import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 
+
 createApp(App).use(router).mount('#app')
+
+// import axios from 'axios'
+// Vue.prototype.$http = axios
