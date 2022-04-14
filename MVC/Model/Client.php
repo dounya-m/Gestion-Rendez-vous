@@ -13,27 +13,32 @@ require_once './Config/Database.php';
         $stmt = null;
 }
 
-static public function add($nom,$prenom,$age,$date,$email,$phone){
+static public function add($nom,$prenom,$age,$email,$phone){
 
     $new_key = uniqid();
     $md_key = md5($new_key);
 
+    $to_email = "mellouki.dounya@gmail.com";
+    $subject = "Simple Email Test via PHP";
+    $body = "Hi, This is test email send by PHP Script";
+    $headers = "From: sender email";
+
     $stmt = Db::connect()->prepare('INSERT INTO client 
-    (id, nom, prenom, age, date, email, phone)
-    VALUES (?,?,?,?,?,?,?)');
+    (id, nom, prenom, age, email, phone)
+    VALUES (:id, :nom, :prenom, :age,:email, :phone)');
     
-        $stmt->bindParam(1, $md_key);
-        $stmt->bindParam(2, $nom);
-        $stmt->bindParam(3, $prenom);
-        $stmt->bindParam(4, $age);
-        $stmt->bindParam(5, $date);
-        $stmt->bindParam(6, $email);
-        $stmt->bindParam(7, $phone);
+        $stmt->bindParam(':id', $md_key); 
+        $stmt->bindParam(':nom', $nom);
+        $stmt->bindParam(':prenom', $prenom);
+        $stmt->bindParam(':age', $age);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':phone', $phone);
 
         if($stmt->execute()){
 
-            uniqid($md_key, time() + (85400 * 30));
-            
+            mail($to_email, $subject, $body, $headers);
+
+
             return 'ok';
         }else{
             return 'Error';
@@ -43,22 +48,53 @@ static public function add($nom,$prenom,$age,$date,$email,$phone){
 
         }
 
-        static public function get($id){ 
+        static public function get($id){
 
-            try{
-                $query ='SELECT * FROM client WHERE id=:id ';
-                $stmt = Db::connect()->prepare($query);
-                $stmt->execute(array(":id" => $id));
-                $client = $stmt->fetch(PDO::FETCH_ASSOC);
-                return $client;
-    
-            }catch(PDOException $ex){
-    
-                echo 'erreur' . $ex->$getMessage;
-            }
+            $stmt = Db::connect()->prepare('SELECT * FROM client WHERE id = ?');
+            $stmt->bindParam(1, $id);
+            $stmt->execute();
+            return $stmt->fetchAll();
+            $stmt->close();
+            $stmt = null;
         }
+
+
+        static public function delete($id){
+
+            $stmt = Db::connect()->prepare('DELETE FROM client WHERE id=:id');
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            // $stmt->close();
+            $stmt = null;
+        }
+
+        static public function update($id,$nom,$prenom,$age,$date,$email,$phone){
+
+            $stmt = Db::connect()->prepare('UPDATE client SET nom=:nom, prenom=:prenom, age=:age, date=:date, email=:email, phone=:phone WHERE id=:id');
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':nom', $nom);
+            $stmt->bindParam(':prenom', $prenom);
+            $stmt->bindParam(':age', $age);
+            $stmt->bindParam(':date', $date);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':phone', $phone);
+            $stmt->execute();
+            // $stmt->close();
+            $stmt = null;
+        }
+
+
+
         
     }    
 
 
+            // $to      = $email;
+            // $subject = 'le sujet';
+            // $message = 'Bonjour !';
+            // $headers = 'From: webmaster@example.com' . "\r\n" .
+            // 'Reply-To: webmaster@example.com' . "\r\n" .
+            // 'X-Mailer: PHP/' . phpversion();
+
+            // mail($to, $subject, $message, $headers);
 ?>

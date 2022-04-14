@@ -34,6 +34,22 @@ class AppointmentController{
         
             }
 
+            public function deleteApp(){
+                $id = json_decode(file_get_contents("php://input")); 
+                $appoint = new Appointment();
+                $json =  json_encode($appoint->delete($id->id));
+                echo $json;
+            }
+
+            public function updateApp(){
+                $id = json_decode(file_get_contents("php://input")); 
+                $star = json_decode(file_get_contents("php://input")); 
+                $ending = json_decode(file_get_contents("php://input")); 
+                $appoint = new Appointment();
+                $json =  json_encode($appoint->update($id->id,$star->star,$ending->ending));
+                echo $json;
+            }
+
 
 
     }

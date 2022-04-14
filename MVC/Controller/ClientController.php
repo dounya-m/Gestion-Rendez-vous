@@ -26,22 +26,30 @@ class clientController{
         $prenom = json_decode(file_get_contents("php://input")); 
         $age = json_decode(file_get_contents("php://input")); 
         $email = json_decode(file_get_contents("php://input"));
-        $date = json_decode(file_get_contents("php://input"));
         $phone = json_decode(file_get_contents("php://input"));
 
-        $json= json_encode($newClient->add($nom->nom,$prenom->prenom,$age->age,$date->date,$email->email,$phone->phone));
+        $json= json_encode($newClient->add($nom->nom,$prenom->prenom,$age->age,$email->email,$phone->phone));
         echo $json;
 
 
     }
 
-    
-    public function getOneClient(){
-
+    public function deleteClient($id){
         $client = new Client();
-        $json= json_encode($client->get());
+        $json= json_encode($client->delete($id));
         echo $json;
+    }
 
+    public function updateClient($id){
+        $client = new Client();
+        $json= json_encode($client->update($id));
+        echo $json;
+    }
+
+    public function getClient($id){
+        $client = new Client();
+        $json= json_encode($client->get($id));
+        echo $json;
     }
 }
 

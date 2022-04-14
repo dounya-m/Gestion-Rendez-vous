@@ -61,7 +61,10 @@
 <script>
 // @ is an alias to /src
 
-import HelloWorld from '@/components/HelloWorld.vue'
+// import FooterProject from 'components/FooterProject.vue'
+
+// import FooterProject from '@/components/FooterProject.vue'
+
 import axios from "axios";
 export default {
   name: 'HomeView',
@@ -76,9 +79,9 @@ export default {
       phone : ''
     }
   },
-  components: {
-    HelloWorld
-  },
+  // components: {
+  //   HelloWorld
+  // },
       methods :{
         Add(){
         axios.post("http://localhost/GestionRendez-vous/MVC/clientController/addClient/",JSON.stringify({"nom": this.nom,
