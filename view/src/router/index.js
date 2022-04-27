@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LogingForm from '../components/LogingForm.vue'
-
+import CreneauPage from '../views/CreneauPage.vue'
 const routes = [
   {
     path: '/',
@@ -12,6 +12,11 @@ const routes = [
     path: '/loging',
     name: 'LogingForm',
     component: LogingForm
+  },
+  {
+    path: '/CreneauPage',
+    name: 'CreneauPage',
+    component: CreneauPage
   },
   {
     path: '/about',

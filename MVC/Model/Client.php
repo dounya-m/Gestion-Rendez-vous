@@ -49,7 +49,7 @@ static public function add($nom,$prenom,$age,$email,$phone){
         }
 
         static public function get($id){
-
+            // $id= $_POST['id'];
             $stmt = Db::connect()->prepare('SELECT * FROM client WHERE id = ?');
             $stmt->bindParam(1, $id);
             $stmt->execute();
@@ -84,11 +84,6 @@ static public function add($nom,$prenom,$age,$email,$phone){
         }
 
 
-
-        
-    }    
-
-
             // $to      = $email;
             // $subject = 'le sujet';
             // $message = 'Bonjour !';
@@ -97,4 +92,5 @@ static public function add($nom,$prenom,$age,$email,$phone){
             // 'X-Mailer: PHP/' . phpversion();
 
             // mail($to, $subject, $message, $headers);
+    }
 ?>

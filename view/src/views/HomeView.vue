@@ -44,7 +44,7 @@
               <input type="tel" id="phone" name="phone" v-model="phone" placeholder="phone number">
               <div class="forme_button">
                 <button button class="btn" type="submit">Sign Up Now</button>
-                <button button class="btn" type="submit">Get Login</button>
+                <router-link to="/loging" button class="btn" type="submit">Get Login</router-link>
 
               </div>
                 </div>
@@ -79,9 +79,6 @@ export default {
       phone : ''
     }
   },
-  // components: {
-  //   HelloWorld
-  // },
       methods :{
         Add(){
         axios.post("http://localhost/GestionRendez-vous/MVC/clientController/addClient/",JSON.stringify({"nom": this.nom,
@@ -94,6 +91,9 @@ export default {
             console.log(Response.status);
             console.log(Response.data);
         })
+                  {
+              this.$router.push('/CreneauPage');
+            }
         }
     }
 }

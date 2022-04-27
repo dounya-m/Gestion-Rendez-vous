@@ -34,6 +34,7 @@ class clientController{
 
     }
 
+
     public function deleteClient($id){
         $client = new Client();
         $json= json_encode($client->delete($id));
@@ -46,7 +47,8 @@ class clientController{
         echo $json;
     }
 
-    public function getClient($id){
+    public function getClient(){
+        $id= $_POST['id'];
         $client = new Client();
         $json= json_encode($client->get($id));
         echo $json;
