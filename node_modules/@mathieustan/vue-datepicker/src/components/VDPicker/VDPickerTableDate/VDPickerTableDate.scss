@@ -1,0 +1,53 @@
+@import './variables';
+
+.vd-picker__table {
+  position: relative;
+  padding: 0 12px;
+  height: $table-height-md;
+
+  .vd-picker--bottomsheet & {
+    height: $table-height;
+  }
+
+  /* Week
+  ---------------------- */
+  &-week {
+    display: flex;
+    flex-wrap: nowrap;
+    flex: 1 1 100%;
+    max-width: 100%;
+
+    padding: $gutter 0;
+    font-weight: 600;
+
+    font-size: $week-font-size;
+    line-height: $week-line-height;
+    font-weight: $week-font-weight;
+    color: $week-color;
+  }
+
+  &-weekday {
+    flex: 0 0 $day-width;
+    max-width: $day-width;
+    text-align: center;
+  }
+
+  /* Days
+  ---------------------- */
+  &-days__wrapper {
+    position: relative;
+    overflow: hidden;
+    height: $table-date-height-md;
+
+    .vd-picker--bottomsheet & {
+      height: $table-date-height;
+    }
+  }
+
+  &-days {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    width: 100%;
+  }
+}

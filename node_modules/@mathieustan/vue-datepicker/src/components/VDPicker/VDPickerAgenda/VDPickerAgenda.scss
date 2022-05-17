@@ -1,0 +1,93 @@
+@import '../index';
+
+.vd-picker,
+.vd-picker *,
+.vd-picker ::before,
+.vd-picker ::after {
+  box-sizing: border-box;
+}
+
+.vd-picker {
+  display: flex;
+  flex-direction: column;
+  width: get-size(datepicker, width, desktop);
+  background-color: white;
+  border-radius: get-border-radius(2);
+  box-shadow: 0 2px 8px rgba(50, 50, 93, 0.2);
+
+  &:focus,
+  &:active {
+    outline: 0;
+  }
+
+  &--bottomsheet {
+    width: get-size(datepicker, width, mobile);
+    box-shadow: none;
+
+    .vd-picker-header {
+      border-radius: 0;
+    }
+  }
+
+  &--rtl {
+    direction: rtl;
+  }
+
+  /* Title
+  ---------------------- */
+  &__title {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: get-size(datepicker, title, desktop);
+    padding: $gutter $gutter*2;
+    border-radius: get-border-radius(4) get-border-radius(4) 0 0;
+
+    .vd-picker--rtl & {
+      padding: 0 $gutter*2 0 0;
+    }
+
+    @include mq(phone) {
+      display: none;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    &-close {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      height: 24px;
+      width: 24px;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      user-select: none;
+
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      button {
+        @extend %reset-button;
+      }
+    }
+  }
+
+  /* Body
+  ---------------------- */
+  &__body {
+    position: relative;
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: column;
+    height: auto;
+    overflow: hidden;
+    z-index: 0;
+  }
+}

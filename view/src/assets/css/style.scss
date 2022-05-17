@@ -176,3 +176,45 @@ $button-color: #0085FF;
         }
     }
     }
+
+
+    .app{
+        margin: 4vw 10vw 6vw 10vw;
+        background-color: #eff7ffad;
+        padding: 2vw;
+        border-radius: 35px;
+        .app_items{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 4vw;
+            .app_items_chiled{
+            display: flex;
+            gap: 3vw;
+            justify-content: center;
+            input ,select{
+                padding: 1vw;
+                width: 16vw;
+                height: 3vw;
+                border: #4f759b solid 1px;
+                border-radius: 10px;
+            }
+            }
+            .app_items_button{
+                margin-top: 2vw;
+                button{
+                    width: 6vw;
+                    height: 2vw;
+                    border: none;
+                    border-radius: 10px;
+                    background-color: #2639ED;
+                    color: white;
+                    font-weight: 500;
+                }
+                button:hover{
+                    background-color: #0085FF;
+                }
+
+            }
+        }
+    }

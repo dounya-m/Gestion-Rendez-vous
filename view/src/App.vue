@@ -10,13 +10,12 @@
       <button class="btn" type="submit">Sign In</button>
     </div>
   </nav>
-  <router-view/>
+  <!-- <router-view/> -->
 </template>
 
 <style lang="scss">
 
 
   @import './assets/css/style.css';
-
 
 </style>

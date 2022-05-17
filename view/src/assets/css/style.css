@@ -214,4 +214,61 @@ nav .btn:hover {
 .form .form .btn:hover {
   background-color: #264f76;
 }
+
+.app {
+  margin: 4vw 10vw 6vw 10vw;
+  background-color: #eff7ffad;
+  padding: 2vw;
+  border-radius: 35px;
+}
+
+.app .app_items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 4vw;
+}
+
+.app .app_items .app_items_chiled {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 3vw;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.app .app_items .app_items_chiled input, .app .app_items .app_items_chiled select {
+  padding: 1vw;
+  width: 16vw;
+  height: 3vw;
+  border: #4f759b solid 1px;
+  border-radius: 10px;
+}
+
+.app .app_items .app_items_button {
+  margin-top: 2vw;
+}
+
+.app .app_items .app_items_button button {
+  width: 6vw;
+  height: 2vw;
+  border: none;
+  border-radius: 10px;
+  background-color: #2639ED;
+  color: white;
+  font-weight: 500;
+}
+
+.app .app_items .app_items_button button:hover {
+  background-color: #0085FF;
+}
 /*# sourceMappingURL=style.css.map */

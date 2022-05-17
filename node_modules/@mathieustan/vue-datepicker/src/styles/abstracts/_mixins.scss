@@ -1,0 +1,100 @@
+// --------------------------------------------
+// Media Query Mixin --------------------------
+// --------------------------------------------
+
+/*
+  Media Query mixin
+  @example scss
+
+  @include mq($from: mobile) {
+    color: red;
+  }
+  @include mq($to: tablet) {
+    color: blue;
+  }
+  @include mq(mobile, tablet) {
+    color: green;
+  }
+  @include mq($from: tablet, $and: '(orientation: landscape)') {
+    color: teal;
+  }
+*/
+
+$breakpoints: (
+  "phone":        map-get($screen__sizes, phone),
+  "tablet":       map-get($screen__sizes, tablet),
+  "desktop":      map-get($screen__sizes, desktop),
+);
+@mixin mq(
+  $from: false,
+  $to: false,
+  $and: false,
+  $media-feature: width,
+  $media-type: 'only screen'
+) {
+  $media-query: '';
+  $min-width: 0;
+  $max-width: 0;
+
+  @if ($from) {
+    @if type-of($from) == number {
+      $min-width: $from;
+    } @else if map_has_key($breakpoints, $from) {
+      $min-width: map_get($breakpoints, $from);
+    }
+  }
+
+  @if $to {
+    @if type-of($to) == number {
+      $max-width: $to - 1px;
+    } @else if map_has_key($breakpoints, $to) {
+      $max-width: map_get($breakpoints, $to) - 1px;
+    }
+  }
+
+  @if $media-feature {
+    @if $min-width != 0 {
+      $media-query: '#{$media-query} and (min-#{$media-feature}: #{$min-width})';
+    }
+    @if $max-width != 0 {
+      $media-query: '#{$media-query} and (max-#{$media-feature}: #{$max-width})';
+    }
+  }
+
+  @if $and {
+    $media-query: '#{$media-query} and #{$and}';
+  }
+
+  // Remove unnecessary media query prefix 'all and '
+  @if ($media-type == 'all' and $media-query != '') {
+    $media-type: '';
+    $media-query: str-slice(unquote($media-query), 6);
+  }
+
+  @media #{$media-type + $media-query} {
+    @content;
+  }
+
+}
+// --------------------------------------------
+// Placeholder Mixin --------------------------
+// --------------------------------------------
+@mixin input-placeholder {
+  &.placeholder { @content; }
+  &::placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+  &::-webkit-input-placeholder { @content; }
+}
+
+// --------------------------------------------
+// Transitions Mixin ----------------------------
+// --------------------------------------------
+@mixin transition-default() {
+  &-enter-active,
+  &-leave-active {
+    transition: all .3s get-easing(swing);
+    transition-property: opacity, transform, height;
+  }
+}

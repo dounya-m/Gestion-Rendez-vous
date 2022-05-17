@@ -1,0 +1,100 @@
+@import './variables';
+
+.vd-picker-header {
+  color: white;
+  padding: ($gutter*2);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-wrap: wrap;
+  line-height: 1;
+  min-height: $header-height;
+  height: $header-height;
+  border-radius: get-border-radius(2) get-border-radius(2) 0 0;
+
+  @include mq(tablet) {
+    min-height: $header-md-height;
+    height: $header-md-height;
+  }
+
+  &--range {
+    .vd-picker-header__wrap {
+      flex: 1 1 auto;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .vd-picker-header__date {
+      font-size: $header-font-size;
+      height: $header-text-height;
+
+      @include mq(tablet) {
+        font-size: $header-md-font-size;
+        height: $header-md-text-height;
+      }
+    }
+  }
+
+  &--year {
+    .vd-picker-header__year {
+      flex: 1 1 auto;
+      font-size: $header-md-font-size;
+      height: $header-md-text-height;
+    }
+  }
+
+  &__year {
+    align-items: center;
+    display: inline-flex;
+    font-size: 14px;
+    margin-bottom: $gutter;
+    opacity: 0.6;
+    transition: opacity .3s;
+
+    &:hover:not(&--active),
+    &:focus:not(&--active) {
+      cursor: pointer;
+      opacity: 1;
+    }
+
+    &--active {
+      opacity: 1;
+      cursor: default;
+    }
+  }
+
+  &__wrap {
+    position: relative;
+    display: flex;
+    width: 100%;
+  }
+
+  &__date {
+    position: relative;
+    display: flex;
+    width: 100%;
+    font-size: $header-md-font-size;
+    height: $header-md-text-height;
+    text-align: left;
+    overflow: hidden;
+    padding-bottom: $gutter;
+    margin-bottom: -#{$gutter};
+    opacity: 0.6;
+    transition: opacity .3s;
+
+    &:hover:not(&--active),
+    &:focus:not(&--active) {
+      cursor: pointer;
+      opacity: 1;
+    }
+
+    &--active {
+      opacity: 1;
+      cursor: default;
+    }
+
+    @include mq(tablet) {
+      font-size: $header-lg-font-size;
+      height: $header-lg-text-height;
+    }
+  }
+}

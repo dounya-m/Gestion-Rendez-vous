@@ -91,8 +91,9 @@ export default {
             console.log(Response.status);
             console.log(Response.data);
         })
-                  {
-              this.$router.push('/CreneauPage');
+            {
+              // localStorage.setItem('id',this.id);
+              this.$router.push('/loging');
             }
         }
     }

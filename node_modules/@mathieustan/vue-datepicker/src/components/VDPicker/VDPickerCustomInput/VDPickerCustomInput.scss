@@ -1,0 +1,117 @@
+@import '../index.scss';
+
+.vd-picker__input {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  color: inherit;
+  min-height: inherit;
+
+  .vd-wrapper--rtl & {
+    direction: rtl;
+    input[type="text"],
+    button {
+      margin: 0 $gutter 0 0;
+    }
+  }
+
+  // Modifiers
+  &--disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+
+    input,
+    .vd-picker__input-icon__wrapper {
+      opacity: .38;
+    }
+  }
+
+  &--no-calendar-icon {
+    input,
+    button {
+      margin: 0;
+    }
+  }
+
+  // Elements
+  &-clear {
+    display: inline-flex;
+    align-self: flex-start;
+    line-height: 1;
+    user-select: none;
+
+    &__icon {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      height: 24px;
+      min-width: 24px;
+      width: 24px;
+      flex: 1 0 auto;
+
+      button {
+        @extend %reset-button;
+      }
+
+      .vd-icon.vd-icon {
+        height: 24px;
+        min-width: 24px;
+        width: 24px;
+      }
+    }
+  }
+
+  &-icon {
+    display: inline-flex;
+    align-self: flex-start;
+    margin-top: 4px;
+    margin-right: auto;
+    padding-right: 4px;
+    line-height: 1;
+    user-select: none;
+
+    &__wrapper {
+      display: inline-flex;
+      align-items: center;
+      height: 24px;
+      flex: 1 0 auto;
+      justify-content: center;
+      min-width: 24px;
+      width: 24px;
+    }
+  }
+
+  input {
+    position: relative;
+    flex: 1 1 auto;
+    max-height: 32px;
+    padding: 8px 0;
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
+
+    background-color: transparent;
+    border-style: none;
+    color: inherit;
+
+    font-stretch: normal;
+    line-height: inherit;
+    font-size: 16px!important;
+    font-weight: 400;
+    font-family: inherit;
+
+    color: currentColor;
+    cursor: inherit;
+
+    &:focus,
+    &:active {
+      outline: 0;
+      box-shadow: none;
+    }
+
+    @include input-placeholder {
+      opacity: .6;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@import '../index';
+
+$default-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+$default-effect-opacity: .12;
+$default-text-color: transparentize(black, .13);
+
+$day-size: get-size(datepicker, day-height, mobile);
+$day-size-md: get-size(datepicker, day-height, desktop);
+
+$day-width: calc(100%/7);
+
+$day-inner-size: #{$day-size - 4};
+$day-inner-size-md: #{$day-size-md - 4};

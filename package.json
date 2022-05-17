@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@mathieustan/vue-datepicker": "^0.2.11"
+  }
+}

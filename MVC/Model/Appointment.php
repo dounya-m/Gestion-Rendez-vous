@@ -4,28 +4,33 @@ require_once './Config/Database.php';
 
     class Appointment {
 
-            static public function getAppointment(){
+        //     static public function getAppointment(){
 
-                $stmt = Db::connect()->prepare('SELECT * FROM appointment');
+        //         $stmt = Db::connect()->prepare('SELECT * FROM appointment');
         
-                $stmt->execute();
-                return $stmt->fetchAll();
-                $stmt->close();
-                $stmt = null;
+        //         $stmt->execute();
+        //         return $stmt->fetchAll();
+        //         $stmt->close();
+        //         $stmt = null;
         
+        // }
+
+        static public function allApp(){
+
+            $stmt = Db::connect()->prepare("SELECT a.*, b.nom, b.prenom FROM appointment AS a, client AS b");
+            $stmt->execute();
+            return $stmt->fetchAll();
         }
 
-        static public function add($star,$ending){
-
-            $today = DATE('now');
+        static public function add($date,$time,$id_client){
         
             $stmt = Db::connect()->prepare('INSERT INTO appointment 
-            (date, star, ending)
+            (date, time , id_client)
             VALUES (?,?,?)');
             
-                $stmt->bindParam(1, $today);
-                $stmt->bindParam(2, $star);
-                $stmt->bindParam(3, $ending);
+                $stmt->bindParam(1, $date);
+                $stmt->bindParam(2, $time);
+                $stmt->bindParam(3, $id_client);
         
                 if($stmt->execute()){
                     
@@ -33,8 +38,8 @@ require_once './Config/Database.php';
                 }else{
                     return 'Error';
                 }
-                    $stmt->close();
-                    $stmt = null;
+                    // $stmt->close();
+                    // $stmt = null;
         
                 }
 
@@ -50,8 +55,8 @@ require_once './Config/Database.php';
                         }else{
                             return 'Error';
                         }
-                            $stmt->close();
-                            $stmt = null;
+                            // $stmt->close();
+                            // $stmt = null;
                     
                     }
 
@@ -69,8 +74,8 @@ require_once './Config/Database.php';
                             }else{
                                 return 'Error';
                             }
-                                $stmt->close();
-                                $stmt = null;
+                                // $stmt->close();
+                                // $stmt = null;
                         
                         }
 

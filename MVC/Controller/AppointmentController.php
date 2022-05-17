@@ -13,25 +13,35 @@ require_once './Model/Appointment.php';
 
 class AppointmentController{
     
-    public function getAllApp(){
-                $appoint = new Appointment();
-                $json =  json_encode($appoint->getAppointment());
-                echo $json;
-            }
+    // public function getAllApp(){
+    //             $appoint = new Appointment();
+    //             $json =  json_encode($appoint->allApp());
+    //             echo $json;
+    //         }
 
 
             public function addApp(){
         
                 $newClient = new Appointment();
-                // $id=json_decode(file_get_contents("php://input")); 
-                // $date = json_decode(file_get_contents("php://input"));  
-                $star = json_decode(file_get_contents("php://input")); 
-                $ending = json_decode(file_get_contents("php://input")); 
+
+                $date = json_decode(file_get_contents("php://input"));  
+                $time = json_decode(file_get_contents("php://input")); 
+                $id_client = json_decode(file_get_contents("php://input"));
+                
+            var_dump($date); 
         
-                $json= json_encode($newClient->add($star->star,$ending->ending));
+                $json= json_encode($newClient->add($date->date,$time->time,$id_client->id_client));
                 echo $json;
         
         
+            }
+
+            public function getAll(){
+
+                $Allapp = new Appointment();
+                $json = json_encode($Allapp->allApp());
+                echo $json;
+
             }
 
             public function deleteApp(){
