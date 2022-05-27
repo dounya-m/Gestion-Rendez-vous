@@ -1,5 +1,6 @@
-
 <template>
+<div>
+<NavBar/>
   <section class="home">
     <div class="header">
       <h1>Dental Care<br>For a Healthy Smile</h1>
@@ -55,19 +56,22 @@
 
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     </section>
+</div>
 </template>
 
 
 <script>
-// @ is an alias to /src
-
-// import FooterProject from 'components/FooterProject.vue'
-
-// import FooterProject from '@/components/FooterProject.vue'
+import NavBar from '../components/NavBar.vue'
 
 import axios from "axios";
+import swal from 'sweetalert';
+
+
 export default {
   name: 'HomeView',
+  components: {
+    NavBar,
+  },
   data()
   {
     return{
@@ -81,7 +85,8 @@ export default {
   },
       methods :{
         Add(){
-        axios.post("http://localhost/GestionRendez-vous/MVC/clientController/addClient/",JSON.stringify({"nom": this.nom,
+        axios.post("http://localhost/GestionRendez-vous/MVC/clientController/addClient/",JSON.stringify({
+    "nom": this.nom,
     "prenom": this.prenom,
     "age":this.age,
     "email": this.email,
@@ -90,9 +95,10 @@ export default {
         .then(Response=>{
             console.log(Response.status);
             console.log(Response.data);
+            swal("Yours Account Created Successfully!, Take Your Id",Response.data);
+            
         })
             {
-              // localStorage.setItem('id',this.id);
               this.$router.push('/loging');
             }
         }

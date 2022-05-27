@@ -23,31 +23,39 @@ class AppointmentController{
             public function addApp(){
         
                 $newClient = new Appointment();
-
                 $date = json_decode(file_get_contents("php://input"));  
                 $time = json_decode(file_get_contents("php://input")); 
                 $id_client = json_decode(file_get_contents("php://input"));
                 
-            var_dump($date); 
-        
+            // var_dump($date); 
+            // var_dump($time);
+            $allclient = Appointment::checkApp($date->date,$time->time);
+            var_dump($allclient["COUNT(*)"]);
+            if($allclient["COUNT(*)"] === 0){
                 $json= json_encode($newClient->add($date->date,$time->time,$id_client->id_client));
                 echo $json;
-        
+            }
+            else{
+                echo json_encode(array("message"=>"Cette date et cette heure existe déja",));
+            }
+
+
         
             }
 
-            public function getAll(){
+            public function getAll($id){
 
                 $Allapp = new Appointment();
-                $json = json_encode($Allapp->allApp());
+                
+                $json = json_encode($Allapp->allApp($id));
                 echo $json;
 
             }
 
-            public function deleteApp(){
-                $id = json_decode(file_get_contents("php://input")); 
+            public function deleteApp($id){
+             
                 $appoint = new Appointment();
-                $json =  json_encode($appoint->delete($id->id));
+                $json =  json_encode($appoint->delete($id));
                 echo $json;
             }
 

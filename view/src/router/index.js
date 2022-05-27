@@ -32,6 +32,7 @@ const routes = [
     name: 'AllAp',
     component: AllAp
   }
+
 ]
 
 const router = createRouter({

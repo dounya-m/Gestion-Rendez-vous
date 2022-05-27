@@ -15,12 +15,27 @@ require_once './Config/Database.php';
         
         // }
 
-        static public function allApp(){
+        static public function allApp($id){
 
-            $stmt = Db::connect()->prepare("SELECT a.*, b.nom, b.prenom FROM appointment AS a, client AS b");
+            $stmt = Db::connect()->prepare("SELECT a.*, b.nom, b.prenom FROM appointment AS a JOIN client AS b ON a.id_client = b.id WHERE a.id_client = :id and a.date >= CURDATE() or a.time >= CURTIME()");
+            $stmt->bindParam(':id', $id);
             $stmt->execute();
             return $stmt->fetchAll();
         }
+
+        static public function checkApp($date,$time){
+            $stmt = Db::connect()->prepare("SELECT COUNT(*) FROM appointment WHERE `date` = '$date' AND `time` = '$time'");
+            $stmt->execute();
+            return $stmt->fetch();
+            // if($row != 0)
+            // {return true;}
+            // else{
+            //     false;
+            // }
+        
+        }
+
+
 
         static public function add($date,$time,$id_client){
         
@@ -33,7 +48,6 @@ require_once './Config/Database.php';
                 $stmt->bindParam(3, $id_client);
         
                 if($stmt->execute()){
-                    
                     return 'ok';
                 }else{
                     return 'Error';

@@ -9,19 +9,14 @@ require_once './Config/Database.php';
 
         $stmt->execute();
         return $stmt->fetchAll();
-        $stmt->close();
-        $stmt = null;
+        // $stmt->close();
+        // $stmt = null;
 }
 
 static public function add($nom,$prenom,$age,$email,$phone){
 
-    $new_key = uniqid();
-    $md_key = md5($new_key);
-
-    $to_email = "mellouki.dounya@gmail.com";
-    $subject = "Simple Email Test via PHP";
-    $body = "Hi, This is test email send by PHP Script";
-    $headers = "From: sender email";
+    // $new_key = uniqid();
+    $md_key = substr(md5(mt_rand()), 0, 5);
 
     $stmt = Db::connect()->prepare('INSERT INTO client 
     (id, nom, prenom, age, email, phone)
@@ -35,16 +30,12 @@ static public function add($nom,$prenom,$age,$email,$phone){
         $stmt->bindParam(':phone', $phone);
 
         if($stmt->execute()){
-
-            mail($to_email, $subject, $body, $headers);
-
-
-            return 'ok';
+            return  $md_key ;
         }else{
             return 'Error';
         }
-            $stmt->close();
-            $stmt = null;
+            // $stmt->close();
+            // $stmt = null;
 
         }
 
@@ -54,8 +45,8 @@ static public function add($nom,$prenom,$age,$email,$phone){
             $stmt->bindParam(1, $id);
             $stmt->execute();
             return $stmt->fetchAll();
-            $stmt->close();
-            $stmt = null;
+            // $stmt->close();
+            // $stmt = null;
         }
 
 
@@ -65,7 +56,7 @@ static public function add($nom,$prenom,$age,$email,$phone){
             $stmt->bindParam(':id', $id);
             $stmt->execute();
             // $stmt->close();
-            $stmt = null;
+            // $stmt = null;
         }
 
         static public function update($id,$nom,$prenom,$age,$date,$email,$phone){
@@ -80,7 +71,7 @@ static public function add($nom,$prenom,$age,$email,$phone){
             $stmt->bindParam(':phone', $phone);
             $stmt->execute();
             // $stmt->close();
-            $stmt = null;
+            // $stmt = null;
         }
 
 

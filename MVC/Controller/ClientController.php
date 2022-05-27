@@ -41,11 +41,11 @@ class clientController{
         echo $json;
     }
 
-    public function updateClient($id){
-        $client = new Client();
-        $json= json_encode($client->update($id));
-        echo $json;
-    }
+    // public function updateClient($id){
+    //     $client = new Client();
+    //     $json= json_encode($client->update($id));
+    //     echo $json;
+    // }
 
     public function getClient(){
         $id= $_POST['id'];
