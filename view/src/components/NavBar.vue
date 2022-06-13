@@ -53,6 +53,53 @@
     </section>
 </template>
 
+
+<script>
+export default {
+    name: 'NavBar',
+    data() {
+      return {
+        isLoggedIn: localStorage.getItem('id') ?true : false
+      }
+    },
+    beforecreated() {
+      this.isLoggedIn = localStorage.getItem('id') ? true : false
+    },
+    
+methods:{
+  logout(){
+    localStorage.removeItem('id')
+                console.log(typeof localStorage['id']);
+                if(!localStorage['id']){
+                this.ifLogin=false;
+    }
+    // console.log(this.ifLogin)
+    this.$router.push('/')
+  },
+
+},
+    mounted(){
+var sidenav = document.getElementById("mySidenav");
+var openBtn = document.getElementById("openBtn");
+var closeBtn = document.getElementById("closeBtn");
+
+openBtn.onclick = openNav;
+closeBtn.onclick = closeNav;
+
+/* Set the width of the side navigation to 250px */
+function openNav() {
+  sidenav.classList.add("active");
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  sidenav.classList.remove("active");
+}
+
+    }
+}
+</script>
+
 <style>
 /* Sidenav menu */
 img{
@@ -115,49 +162,3 @@ img{
 
 
 </style>
-
-<script>
-export default {
-    name: 'NavBar',
-    data() {
-      return {
-        isLoggedIn: localStorage.getItem('id') ?true : false
-      }
-    },
-    beforecreated() {
-      this.isLoggedIn = localStorage.getItem('id') ? true : false
-    },
-    
-methods:{
-  logout(){
-    localStorage.removeItem('id')
-                console.log(typeof localStorage['id']);
-                if(!localStorage['id']){
-                this.ifLogin=false;
-    }
-    // console.log(this.ifLogin)
-    this.$router.push('/')
-  },
-
-},
-    mounted(){
-var sidenav = document.getElementById("mySidenav");
-var openBtn = document.getElementById("openBtn");
-var closeBtn = document.getElementById("closeBtn");
-
-openBtn.onclick = openNav;
-closeBtn.onclick = closeNav;
-
-/* Set the width of the side navigation to 250px */
-function openNav() {
-  sidenav.classList.add("active");
-}
-
-/* Set the width of the side navigation to 0 */
-function closeNav() {
-  sidenav.classList.remove("active");
-}
-
-    }
-}
-</script>

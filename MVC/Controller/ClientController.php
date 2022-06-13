@@ -53,6 +53,9 @@ class clientController{
         $json= json_encode($client->get($id));
         echo $json;
     }
+
+    
+
 }
 
 

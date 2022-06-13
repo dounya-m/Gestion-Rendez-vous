@@ -17,7 +17,7 @@
         </ul>
     </div>
     <form action="" >
-            <button button @click="deleteApp(a.id)" class="btn" type="submit">Cancel</button>
+            <button button @click=" (a.id)" class="btn" type="submit">Cancel</button>
     </form>
     </section>
     </div>
@@ -42,15 +42,14 @@ export default {
             // time : '',
         }
     },
-   
+
     methods:{
-       async deleteApp(id){
-           await  axios.delete(`http://localhost/GestionRendez-vous/MVC/AppointmentController/deleteApp/${id}`)
+        async deleteApp(id){
+            await  axios.delete(`http://localhost/GestionRendez-vous/MVC/AppointmentController/deleteApp/${id}`)
         .then(response=>{
             console.log(response.data);
         });
-               this.$router.go();
-
+            this.$router.go();
         }
     },
 
